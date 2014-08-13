@@ -1,9 +1,12 @@
 package com.scottchidester.helloworld;
 
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,6 +15,23 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+        VideoView videoView =(VideoView)findViewById(R.id.videoView);
+        MediaController mediaController= new MediaController(this);
+        mediaController.setAnchorView(videoView);
+        //Uri uri=Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.one);
+        Uri uri=Uri.parse("https://d2x1oedzzjp4du.cloudfront.net:443/uploads/production/videofiles/base/TTV-FatherandSon.mp4");
+        videoView.setMediaController(mediaController);
+        videoView.setVideoURI(uri);
+        videoView.requestFocus();
+
+        videoView.start();
+
+
+
+
     }
 
 
